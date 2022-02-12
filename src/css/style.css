@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(6, 0, 85);
+  background-color: rgba(225, 250, 220, 0.719);
+}
+
+.hidden{
+display: none;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+
+}
+
+.btn {
+  padding: 15px;
+  margin-top: 15%;
+  background-color: brown;
+  border: none;
+  border-radius: 5px;
+  color: antiquewhite;
+  font-size: 25px;
+  
+}
+
+.btn:hover{
+  background-color: rgb(187, 116, 3);
+}
+
+.popover{
+  width: 250px;
+  text-align: left;
+  position: absolute;
+  background-color: rgb(253, 249, 231);
+  border: 1px solid blueviolet;
+  padding: 5px;
+  z-index: 999;
+}
+
+h3{
+  background-color: rgb(251, 215, 161);
+}
