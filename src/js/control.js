@@ -1,6 +1,5 @@
 import http from './http';
 import CreateElement from './createElement';
-// import { submitForm } from './events';
 
 export default function control() {
   const url = 'https://serge-heroku.herokuapp.com/';
