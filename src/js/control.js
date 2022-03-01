@@ -3,7 +3,7 @@ import CreateElement from './createElement';
 // import { submitForm } from './events';
 
 export default function control() {
-  const url = 'http://serge-heroku.herokuapp.com/';
+  const url = 'https://serge-heroku.herokuapp.com/';
   // const url70 = 'http://localhost:7070/';
   let liID = null;
 
