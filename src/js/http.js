@@ -1,4 +1,4 @@
-export default function http(metod, url) {
+export default function http(metod, url, formData = null) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open(metod, url);
@@ -9,6 +9,10 @@ export default function http(metod, url) {
         reject(xhr.status);
       }
     });
-    xhr.send();
+    if (metod === 'POST' || metod === 'PUT') {
+      xhr.send(formData);
+    } else {
+      xhr.send();
+    }
   });
 }

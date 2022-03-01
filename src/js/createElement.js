@@ -1,9 +1,5 @@
 /* eslint-disable class-methods-use-this */
 export default class CreateElement {
-  constructor() {
-    this.url = 'http://serge-heroku.herokuapp.com/';
-  }
-
   initDOM() {
     document.body.innerHTML = `<div class="container">
           <button type="button" class="btn-add" data-btn-add="js-btn-add">
@@ -21,7 +17,6 @@ export default class CreateElement {
     const cards = document.querySelector('[data-cards=js-cards]');
 
     for (const item of data) {
-      if (!item.description) item.description = '';
       const card = document.createElement('li');
       card.classList.add('card');
       card.dataset.card = 'jsCard';
@@ -33,18 +28,31 @@ export default class CreateElement {
           <h4 class="card__name">${item.name}</h4>
           <span class="card__created">${item.created}</span>
         </div>
-        <p class="card__description">${item.description}</p>
       </div>
       <button class="btn__card" data-btn-edit="js-btn-edit">&#9998</button>
       <button class="btn__card" data-btn-delete="js-btn-delete">&#10008</button>
     `;
 
+      if (item.status === 'true') {
+        card.querySelector('[data-btn-status=js-btn-status]').textContent = '\u2714';
+      }
       cards.appendChild(card);
     }
   }
 
+  createElementCardDescription(description) {
+    const cardDescription = document.createElement('p');
+    cardDescription.classList.add('card__description');
+    if (description === '') {
+      cardDescription.textContent = 'Добавьте подробное описание';
+    } else {
+      cardDescription.textContent = description;
+    }
+    return cardDescription;
+  }
+
   // Добавить тикет, Изменить тикет
-  createPopapForm(formTitle) {
+  createPopapForm(formTitle, btnSubmit = 'popup-btn-submit') {
     const box = document.createElement('div');
     box.classList.add('popup');
     box.innerHTML = `<form class="form" id="form">
@@ -58,7 +66,7 @@ export default class CreateElement {
 
         <div class="form__btn">
           <button class="btn__false">Отмена</button>
-          <button class="btn__true">Ок</button>
+          <button class="btn__true" data-${btnSubmit}="${btnSubmit}" type="submit">Ок</button>
         </div>
       </form>
     `;
@@ -75,9 +83,11 @@ export default class CreateElement {
 
         <div class="form__btn">
           <button class="btn__false">Отмена</button>
-          <button class="btn__true">Ок</button>
+          <button class="btn__true" data-popup-btn-true="popup-btn-true">Ок</button>
         </div>
       </form>
     `;
+
+    document.body.appendChild(box);
   }
 }
